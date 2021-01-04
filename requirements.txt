@@ -1,4 +1,7 @@
-flask
-pandas
-TA-Lib
-yfinance
+# flask
+# pandas
+# TA-Lib
+# yfinance
+
+
+streamlit
