@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: Arial;
+            margin: 20px;
+        }
+        .bullish{
+            background: green;
+            color: white;
+        }
+        .berish{
+            background: red;
+            color: white;
+        }
+        td{
+            padding: 10px;
+        }
+    </style>
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Candlestick Screener</h1>
+    <form action="">
+        <select name="pattern" id="">
+            {% for pattern in patterns %} 
+            <option value="{{ pattern }}" {% if pattern== c_pattern %} selected = "selected" {% endif %}>{{ patterns[pattern] }}</option>
+            {% endfor %}
+        </select> 
+<input type="submit" value="scan">
+    </form> 
+    <table>
+        <tr>
+            <th>
+                symbol
+            </th>
+            <th>
+                company Name
+            </th>
+            <th>
+                signal
+            </th>
+        </tr>
+        {% for stock in stocks%}
+            {% if stocks[stock][c_pattern] %}
+                <tr>
+                    <td>
+                        {{stock}}
+                    </td>
+                 <td>
+                    {{stocks[stock]['company']}}
+                 </td>   
+                 <td class=" {{stocks[stock][c_pattern]}} ">
+                    {{stocks[stock][c_pattern]}}
+                 </td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="3">
+                        <iframe src="https://finance.yahoo.com/chart/{{stock}}"></iframe>
+                    </td>
+                </tr> -->
+            {%endif%}
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
