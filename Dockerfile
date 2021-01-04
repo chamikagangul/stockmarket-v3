@@ -3,6 +3,8 @@ FROM python:3.8.1-alpine3.11
 COPY . /app
 WORKDIR /app
 
+ENV PYTHON_TA_LIB_VERSION 0.4.17
+
 RUN apk add --no-cache --virtual .build-deps \
         musl-dev \
         linux-headers \
@@ -19,7 +21,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && ./configure --prefix=/usr \
     && make \
     && make install \
-    && pip3 install setuptools numpy \
+    && pip3 install setuptools \
     && pip3 install ta-lib==${PYTHON_TA_LIB_VERSION} \
     && apk del .build-deps \
     && rm -rf /root/.cache \
