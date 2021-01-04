@@ -1,7 +1,5 @@
-# flask
-# pandas
-# TA-Lib
-# yfinance
-
-
 streamlit
+flask
+pandas
+TA-Lib
+yfinance
