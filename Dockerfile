@@ -21,7 +21,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && ./configure --prefix=/usr \
     && make \
     && make install \
-    && pip3 install setuptools \
+    && pip3 install setuptools numpy \
     && pip3 install ta-lib==${PYTHON_TA_LIB_VERSION} \
     && apk del .build-deps \
     && rm -rf /root/.cache \
